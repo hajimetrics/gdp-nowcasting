@@ -81,7 +81,7 @@ GDPナウキャストを行うために使うデータセットオブジェク�
 * self.vintage:  
 Dataset.extracet_vintage()で参照する疑似ナウキャストのvintage。デフォルト'2019/9/1'
 * self.days_before: 
-何日前予測か。
+何日前予測か。  
 <_gen_increase_valid_data()で定義>  
 * self.X_valid:  
 検証データの説明変数。(検証のテスト用)
@@ -90,7 +90,7 @@ Dataset.extracet_vintage()で参照する疑似ナウキャストのvintage。�
 * self.X_train:  
 検証用推定データの説明変数。(検証の訓練用)
 * self.y_train:  
-検証用推定データの目的変数。(検証の訓練用)
+検証用推定データの目的変数。(検証の訓練用)  
 <_gen_increase_test_data()で定義>  
 * self.X_test:  
 テストデータの説明変数。
@@ -99,7 +99,7 @@ Dataset.extracet_vintage()で参照する疑似ナウキャストのvintage。�
 * self.X_final_train:  
 最終的な訓練データの説明変数。
 * self.y_final_train:  
-最終的な訓練データの目的変数。
+最終的な訓練データの目的変数。  
 <full_gen_increase_valid_data()で定義>  
 * self.vintage_list:  
 vintageの名前のリスト。  
@@ -138,7 +138,7 @@ set_increase_test_model()で用意した未fitモデルself.test_modelsを実際
 * self.predict_period:  
 ナウキャスト対象期の数。
 * self.valid_size:  
-検証データに用いる期の数。
+検証データに用いる期の数。  
 <set_increase_valid_model()で定義>  
 * self.hyparam_list1:  
 1つ目のハイパーパラメータリスト。'lasso', 'ridge', 'elastic' はalpha, 'rf' はnum_estimators
@@ -147,7 +147,7 @@ set_increase_test_model()で用意した未fitモデルself.test_modelsを実際
 * self.hyparam_array:  
 ハイパーパラメータ2つの時のみ定義する。self.hyparam_list, self.hyparam_list2の組み合わせのベクトル。
 * self.valid_models:  
-validationに使うモデルの3次元配列。(num_decrease, predict_period, hyparam_list) ハイパーパラメータ2つの時は、3次元 (num_decrease, predict_period, hyparam_list, hyparam_list2) を4次元 (num_decrease, predict_period, hyparam_list * hyparam_list2)に変形して扱っている。
+validationに使うモデルの3次元配列。(num_decrease, predict_period, hyparam_list) ハイパーパラメータ2つの時は、3次元 (num_decrease, predict_period, hyparam_list, hyparam_list2) を4次元 (num_decrease, predict_period, hyparam_list * hyparam_list2)に変形して扱っている。  
 <increase_validation()で定義>  
 * self.y_valid_hat:  
 検証での予測値系列。(num_decrease, predict_period, len(hyparam_list))
@@ -170,10 +170,10 @@ validationに使うモデルの3次元配列。(num_decrease, predict_period, hy
 * self.best_rmse:  
 各predict_periodそれぞれに対して最小なrmse。
 * self.best_hyparam_index:  
-それぞれのpredict_periodのmseを最小化させるハイパーパラメータがhyparam_list(2つの時はかけてベクトルに直したもの)のどこかを示す。
+それぞれのpredict_periodのmseを最小化させるハイパーパラメータがhyparam_list(2つの時はかけてベクトルに直したもの)のどこかを示す。  
 <set_increase_test_model()で定義>
 * self.test_models:  
-テスト(最終fit)に使うモデルの1次元配列。(sklearnのオブジェクト)
+テスト(最終fit)に使うモデルの1次元配列。(sklearnのオブジェクト)  
 <increase_test()で定義>
 * self.y_test_hat:  
 テストの予測値のarray
