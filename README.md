@@ -25,7 +25,7 @@ realnowcast.pyで定義したクラスを用いて、15日前、45日前、75日
 ### realnowcast.py
 
 #### class Dataset(self, data="master_data_xarray.pkl", setting=None, validation=None, predict_period=30, valid_size=12, days_before=15)
-GDPナウキャストを行うために使うデータセット。ナウキャストのタイミングと設定によって異なる。
+GDPナウキャストを行うために使うデータセットオブジェクト。
 ##### Parameters
 * data: (type: xarray.Dataset)  
 用いる元データ。デフォルトでmasterdata_data_xarray.pklを読み込む。
@@ -131,57 +131,57 @@ set_increase_test_model()で用意した未fitモデルself.test_modelsを実際
 上記のメソッドをまとめて実行する。
 ##### Attributes
 <クラス作成時に定義>  
-self.method:  
+* self.method:  
 モデルの手法。
-self.dataset:  
+* self.dataset:  
 モデル推定に用いるデータ(realnowcast.Datasetオブジェクト)
-self.predict_period:  
+* self.predict_period:  
 ナウキャスト対象期の数。
-self.valid_size:  
+* self.valid_size:  
 検証データに用いる期の数。
 <set_increase_valid_model()で定義>  
-self.hyparam_list1:  
+* self.hyparam_list1:  
 1つ目のハイパーパラメータリスト。'lasso', 'ridge', 'elastic' はalpha, 'rf' はnum_estimators
-self.hyparam_list2:  
+* self.hyparam_list2:  
 2つ目のハイパーパラメータリスト。'elastic' はl1_ratio, 'rf' はmax_depth
-self.hyparam_array:  
+* self.hyparam_array:  
 ハイパーパラメータ2つの時のみ定義する。self.hyparam_list, self.hyparam_list2の組み合わせのベクトル。
-self.valid_models:  
+* self.valid_models:  
 validationに使うモデルの3次元配列。(num_decrease, predict_period, hyparam_list) ハイパーパラメータ2つの時は、3次元 (num_decrease, predict_period, hyparam_list, hyparam_list2) を4次元 (num_decrease, predict_period, hyparam_list * hyparam_list2)に変形して扱っている。
 <increase_validation()で定義>  
-self.y_valid_hat:  
+* self.y_valid_hat:  
 検証での予測値系列。(num_decrease, predict_period, len(hyparam_list))
-self.valid_error:  
+* self.valid_error:  
 検証での予測誤差。(len(hyparam_list), num_decrease, predict_period)
-self.valid_mse:  
+* self.valid_mse:  
 検証でのmse。各predict_period, hyparamに関して、num_decreaseで平均をとる。 各要素は0次元スカラーのxarray.DataArray
-self.valid_rmse:  
+* self.valid_rmse:  
 検証でのrmse。
-self.best_tuned_model:  
+* self.best_tuned_model:  
 各predict_periodそれぞれに対してmseを最小化させるモデル。
-self.best_hyparam:  
+* self.best_hyparam:  
 各predict_periodそれぞれに対してmseを最小化させるモデルのハイパーパラメータ。
-self.best_y_hat:  
+* self.best_y_hat:  
 各predict_periodそれぞれに対して最小なmseとなる予測値。
-self.bset_error:  
+* self.bset_error:  
 各predict_periodそれぞれに対して最小な予測誤差。
-self.best_mse:  
+* self.best_mse:  
 各predict_periodそれぞれに対して最小なmse。
-self.best_rmse:  
+* self.best_rmse:  
 各predict_periodそれぞれに対して最小なrmse。
-self.best_hyparam_index:  
+* self.best_hyparam_index:  
 それぞれのpredict_periodのmseを最小化させるハイパーパラメータがhyparam_list(2つの時はかけてベクトルに直したもの)のどこかを示す。
 <set_increase_test_model()で定義>
-self.test_models:  
+* self.test_models:  
 テスト(最終fit)に使うモデルの1次元配列。(sklearnのオブジェクト)
 <increase_test()で定義>
-self.y_test_hat:  
+* self.y_test_hat:  
 テストの予測値のarray
-self.test_error:  
+* self.test_error:  
 テストの予測誤差のarray
-self.test_mse:  
+* self.test_mse:  
 テストのmse
-self.test_rmse:  
+* self.test_rmse:  
 テストのrmse
 ##### Example
 pseudo_dataset15 = Dataset(setting='pseudo', predict_period=30, valid_size=12, days_before=15) # Datasetオブジェクトの定義  
