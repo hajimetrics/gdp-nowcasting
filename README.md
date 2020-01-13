@@ -10,7 +10,7 @@
 
 ### 予測時点版検証を用いた真正ナウキャスト
 
-
+![alg2](https://user-images.githubusercontent.com/59826800/72265795-73748d80-3660-11ea-8aa8-ec4ca625daef.png)
 
 ### 1次速報値データ検証を用いた真正ナウキャスト
 
@@ -23,7 +23,7 @@
 realnowcast.pyで定義したクラスを用いて、15日前、45日前、75日前の疑似・真正ナウキャストを実行する。realnowcast.Mode.show()でプリントされる結果が表示される。ナウキャストの前に検証(バリデーション)で用いるハイパーパラメータのリストを与える。各検証の様子をvisualize.pyで定義した関数を用いて図示する。
 
 ### realnowcast.py
-#### class realnowcast.Dataset(self, data="master_data_xarray.pkl", setting=None, validation=None, predict_period=30, valid_size=12, days_before=15)
+#### class Dataset(self, data="master_data_xarray.pkl", setting=None, validation=None, predict_period=30, valid_size=12, days_before=15)
 GDPナウキャストを行うために使うデータセット。ナウキャストのタイミングと設定によって異なる。
 ##### Parameters
 * data  
@@ -92,7 +92,12 @@ GDPナウキャストを行うために使うデータセット。ナウキャ�
 * self.firstvalue_array:  
 
 #### class Model(self, method, dataset)
-
+ナウキャストをする際のモデルオブジェクト
+##### Parameters
+* method
+手法を入力。'ar1', 'lin_reg', 'lasso', 'ridge', 'elastic', 'rf'のいずれかを入力。  
+* dataset
+Datasetクラスオブジェクトを引数に渡す。  
 ##### Methods
 
 ##### Attributes
