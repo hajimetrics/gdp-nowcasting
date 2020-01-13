@@ -67,29 +67,29 @@ GDPナウキャストを行うために使うデータセット。ナウキャ�
 
 ##### Attributes
 <クラス作成時に定義>  
-* self.data
-* self.setting
-* self.validation
-* self.predict_period
-* self.valid_size
-* self.feature_name
-* self.vintage
-* self.days_before: 何日前予測か。15日前, 45日前, 75日前のいずれか。
+* self.data:  
+* self.setting:  
+* self.validation:  
+* self.predict_period:  
+* self.valid_size:  
+* self.feature_name:  
+* self.vintage:  
+* self.days_before: 何日前予測か。15日前, 45日前, 75日前のいずれか。  
 <_gen_increase_valid_data()で定義>  
-* self.X_valid
-* self.y_valid
-* self.X_train
-* self.y_train
+* self.X_valid:  
+* self.y_valid:  
+* self.X_train:  
+* self.y_train:  
 <_gen_increase_test_data()で定義>  
-* self.X_test
-* self.y_test
-* self.X_final_train
-* self.y_final_train
+* self.X_test:  
+* self.y_test:  
+* self.X_final_train:  
+* self.y_final_train:  
 <full_gen_increase_valid_data()で定義>  
-* self.vintage_list = None # vintageの名前のリスト
-* self.preliminary_vintage = None # 速報値が発表されたvintageの名前のリスト
+* self.vintage_list: vintageの名前のリスト  
+* self.preliminary_vintage: 速報値が発表されたvintageの名前のリスト  
 <full_fillnan()で定義>  
-* self.firstvalue_array = None
+* self.firstvalue_array:  
 
 ### masterdata_data_xarray.pkl
 OECD.statsより入手したリアルタイムデータを編集して、xarray.Datasetオブジェクトとして保存した。
