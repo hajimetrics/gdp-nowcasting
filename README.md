@@ -23,7 +23,7 @@
 realnowcast.pyで定義したクラスを用いて、15日前、45日前、75日前の疑似・真正ナウキャストを実行する。realnowcast.Mode.show()でプリントされる結果が表示される。ナウキャストの前に検証(バリデーション)で用いるハイパーパラメータのリストを与える。各検証の様子をvisualize.pyで定義した関数を用いて図示する。
 
 ### realnowcast.py
-#### class realnowcast.Dataset(data="master_data_xarray.pkl", setting=None, validation=None, predict_period=30, valid_size=12, days_before=15)
+#### class realnowcast.Dataset(self, data="master_data_xarray.pkl", setting=None, validation=None, predict_period=30, valid_size=12, days_before=15)
 GDPナウキャストを行うために使うデータセット。ナウキャストのタイミングと設定によって異なる。
 ##### Parameters
 * data  
@@ -90,6 +90,48 @@ GDPナウキャストを行うために使うデータセット。ナウキャ�
 * self.preliminary_vintage: 速報値が発表されたvintageの名前のリスト  
 <full_fillnan()で定義>  
 * self.firstvalue_array:  
+
+#### class Model(self, method, dataset)
+
+##### Methods
+
+##### Attributes
+<クラス作成時に定義>  
+self.method:  
+self.dataset:  
+self.predict_period:  
+self.valid_size:  
+
+<set_increase_valid_model()で定義>  
+self.hyparam_list1:  
+self.hyparam_list2:  
+self.hyparam_array:  
+self.valid_models:  
+
+<increase_validation()で定義>  
+self.y_valid_hat:  
+self.valid_error:  
+self.valid_mse:  
+self.valid_rmse:  
+
+<increase_validation()で定義>  
+self.best_tuned_model:  
+self.best_hyparam:  
+self.best_y_hat:  
+self.bset_error:  
+self.best_mse:  
+self.best_rmse:  
+self.best_hyparam_index:  
+
+<set_increase_test_model()で定義>
+self.test_models = None # 最終fit用のモデルリスト (sklearnのオブジェクト)
+
+<increase_test()で定義>
+self.y_test_hat = None # testの予測値のarray
+self.test_error = None # testの予測誤差のarray
+self.test_mse = None # testの予測の mean squared error
+self.test_rmse = None # test の root mse
+
 
 ### masterdata_data_xarray.pkl
 OECD.statsより入手したリアルタイムデータを編集して、xarray.Datasetオブジェクトとして保存した。
