@@ -10,7 +10,7 @@
 
 ### 予測時点版検証を用いた真正ナウキャスト
 
-![alg2](https://user-images.githubusercontent.com/59720853/72235619-882c3380-3616-11ea-9e41-b2fa6ef56949.png)
+
 
 ### 1次速報値データ検証を用いた真正ナウキャスト
 
@@ -33,6 +33,11 @@ GDPナウキャストを行うために使うデータセット。ナウキャ�
 * validation  
 真正ナウキャストにおける検証の戦略。予測時点版検証なら'pseudo'、1次速報値データ検証なら'full'と入力する。
 * predict_period
+ナウキャスト対象期の数。
+* valid_size 
+検証データに用いる期の数。
+* days_before
+何日前ナウキャストかを指定。
 
 ##### Methods
 * get_available_data(self, start_period='1994-Q1')  
@@ -61,6 +66,30 @@ GDPナウキャストを行うために使うデータセット。ナウキャ�
 パラメータで指定したsettingごとに上記のメソッドを使い分けてDatasetオブジェクトを作成する。
 
 ##### Attributes
+<クラス作成時に定義>  
+self.data
+self.setting
+self.validation
+self.predict_period
+self.valid_size
+self.feature_name
+self.vintage
+self.days_before: 何日前予測か。15日前, 45日前, 75日前のいずれか。
+<_gen_increase_valid_data()で定義>
+self.X_valid
+self.y_valid
+self.X_train
+self.y_train
+<_gen_increase_test_data()で定義>
+self.X_test
+self.y_test
+self.X_final_train
+self.y_final_train
+<full_gen_increase_valid_data()で定義>
+self.vintage_list = None # vintageの名前のリスト
+self.preliminary_vintage = None # 速報値が発表されたvintageの名前のリスト
+<full_fillnan()で定義>
+self.firstvalue_array = None
 
 ### masterdata_data_xarray.pkl
 OECD.statsより入手したリアルタイムデータを編集して、xarray.Datasetオブジェクトとして保存した。
