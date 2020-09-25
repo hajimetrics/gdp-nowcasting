@@ -184,12 +184,14 @@ validationに使うモデルの3次元配列。(num_decrease, predict_period, hy
 * `self.test_rmse`:  
 テストのrmse
 ##### Example
-``pseudo_dataset15 = Dataset(setting='pseudo', predict_period=30, valid_size=12, days_before=15) # Datasetオブジェクトの定義  
+```
+pseudo_dataset15 = Dataset(setting='pseudo', predict_period=30, valid_size=12, days_before=15) # Datasetオブジェクトの定義  
 pseudo_dataset15.build() # Datasetオブジェクトの作成  
 hyparam_list1 = np.linspace(-10, 10, 21)  
 hyparam_list1 = list(10 ** hyparam_list1) # ハイパーパラメータリストの定義  
 pseudo_ridge15 = Model(method='ridge', dataset=pseudo_dataset15) # Modelオブジェクトの定義  
-pseudo_ridge15.execute(hpl1=hyparam_list1) # Modelの検証および予測の実行  ``
+pseudo_ridge15.execute(hpl1=hyparam_list1) # Modelの検証および予測の実行  
+```
 
 ### visualize.py
 `realnowcast.Model`における検証の様子を3Dプロットする関数を定義。
