@@ -24,15 +24,15 @@ realnowcast.pyで定義したクラスを用いて、15日前、45日前、75日
 
 ### realnowcast.py
 
-#### class Dataset(self, data="master_data_xarray.pkl", setting=None, validation=None, predict_period=30, valid_size=12, days_before=15)
+#### `class Dataset(self, data="master_data_xarray.pkl", setting=None, validation=None, predict_period=30, valid_size=12, days_before=15)`
 GDPナウキャストを行うために使うデータセットオブジェクト。
 ##### Parameters
-* data: (type: xarray.Dataset)  
+* `data`: (type: xarray.Dataset)  
 用いる元データ。デフォルトでmasterdata_data_xarray.pklを読み込む。
-* setting: (type: str)  
-疑似ナウキャスト用データセットの場合は'pesudo'、真正ナウキャスト用データセットの場合は'full'と入力する。
-* validation: (type: str)  
-真正ナウキャストにおける検証の戦略。予測時点版検証なら'pseudo'、1次速報値データ検証なら'full'と入力する。
+* `setting`: (type: str)  
+疑似ナウキャスト用データセットの場合は`pesudo`、真正ナウキャスト用データセットの場合は`full`と入力する。
+* `validation`: (type: str)  
+真正ナウキャストにおける検証の戦略。予測時点版検証なら`pseudo`、1次速報値データ検証なら`full`と入力する。
 * predict_period: (type: int)  
 ナウキャスト対象期の数。
 * valid_size: (type: int)  
